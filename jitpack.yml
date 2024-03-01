@@ -9,5 +9,5 @@ script:
   - ./gradlew clean build  # Build the project
 
 install:
-  - FILE="-Dfile=UltraCalculator-release.aar"  # Replace YOUR_ARTIFACT_FILE_NAME with the name of your AAR file
+  - FILE="-Dfile=Utility-release.aar"  # Replace YOUR_ARTIFACT_FILE_NAME with the name of your AAR file
   - mvn install:install-file $FILE -DgroupId=com.github.mdnayeemsarker -DartifactId=UltraCalculator -Dversion=1.0.0 -Dpackaging=aar -DgeneratePom=true
