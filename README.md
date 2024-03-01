@@ -58,11 +58,9 @@ simply use this.
 
 ## Please stay with me, more advance feature are coming. Thank you for using this library. 
 
-## Getting To Know Yeoman
+## Getting Touch with me
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
+ * Mail: dev.ab.nayeem@gmail.com
  * Feel free to [learn more about MD NAYEEM SARKER](https://github.com/mdnayeemsarker).
 
 ## License
