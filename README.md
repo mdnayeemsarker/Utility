@@ -27,7 +27,7 @@ dependencies {
 //If you want to make some beautiful UI, just take this so easy step by step  
 ## PinView for otp verification
 ```bash
-#for xml
+//for xml
 <com.abmn.utility.UI.UPinView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -38,14 +38,14 @@ dependencies {
     app:itemCount="6"
     app:viewType="line"/>
     
-#For java class
+//For java class
 UPinView uPinView = findViewById(R.id.uPinView);
-#enjoy
+//enjoy
 ```
 
 ## Request Focus and set error message
 ```bash
-#for xml
+//for xml
 <EditText
     android:id="@+id/checkET"
     android:layout_gravity="center"
@@ -64,7 +64,7 @@ UPinView uPinView = findViewById(R.id.uPinView);
     android:layout_height="wrap_content"
     tools:ignore="HardcodedText" />
         
-#For java class
+//For java class
 EditText checkET = findViewById(R.id.checkET);
 findViewById(R.id.checkBtnET).setOnClickListener(v -> {
     String check = checkET.getText().toString();
@@ -80,7 +80,7 @@ findViewById(R.id.checkBtnET).setOnClickListener(v -> {
 findViewById(R.id.checkBtnET).setOnClickListener(v -> {
     UEditText.hideKeyboard(this, v);
 });
-#enjoy
+//enjoy
 
 ```
 
@@ -94,7 +94,7 @@ findViewById(R.id.checkBtnET).setOnClickListener(v -> {
         new USnackBar().Snackbar(v, "Here is your input text: " + check);
     }
 });
-#enjoy
+//enjoy
 ```
 ## for snackbar with intent action
 ```bash
@@ -106,25 +106,25 @@ findViewById(R.id.checkBtnET).setOnClickListener(v -> {
       new USnackBar().SnackbarWithAction(v, "Here is your input text: " + check, "Go", this, CheckActivity.class);
     }
 });
-#enjoy
+//enjoy
 ```
 
 //If you need store some local data in application cash
 ## Declare USession class as a local or global variable in your activity or fragment and use the feature
 ```bash
 USession uSession = new USession(this); // this for activity
-    uSession.setData("string", "Utility By MD NAYEEM SARKER"); //for set string data
-    Log.d("uSession String: ", uSession.getData("string")); //for get string data
-    uSession.setInteger("int", 150); //for set integer data
-    Log.d("uSession integer: ", String.valueOf(uSession.getInteger("int"))); //for get integer data
-    uSession.setBoolean("bool", true); //for set bool data
-    Log.d("uSession bool: ", String.valueOf(uSession.getBoolean("bool"))); //for get bool data
-    uSession.setDouble("double", 165.656); //for set double data
-    Log.d("uSession double: ", String.valueOf(uSession.getDouble("double"))); //for get double data
-    uSession.setFloat("float", .656F); //for set float data
-    Log.d("uSession float: ", String.valueOf(uSession.getFloat("float"))); //for get float data
-    uSession.clearData(); //for clear all sesion data
-    Log.d("uSession clear data: ", "Clear all session data");
+uSession.setData("string", "Utility By MD NAYEEM SARKER"); //for set string data
+Log.d("uSession String: ", uSession.getData("string")); //for get string data
+uSession.setInteger("int", 150); //for set integer data
+Log.d("uSession integer: ", String.valueOf(uSession.getInteger("int"))); //for get integer data
+uSession.setBoolean("bool", true); //for set bool data
+Log.d("uSession bool: ", String.valueOf(uSession.getBoolean("bool"))); //for get bool data
+uSession.setDouble("double", 165.656); //for set double data
+Log.d("uSession double: ", String.valueOf(uSession.getDouble("double"))); //for get double data
+uSession.setFloat("float", .656F); //for set float data
+Log.d("uSession float: ", String.valueOf(uSession.getFloat("float"))); //for get float data
+uSession.clearData(); //for clear all sesion data
+Log.d("uSession clear data: ", "Clear all session data");
 ```
 
 //If you use this dependency then you not need to add volley library in you project.
@@ -134,6 +134,8 @@ You just need to install this library, then you can call Rest API and get the re
 ```bash
 #right now this is only for single request
 UConfig.requestToAPI((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
+//right now this is only for single request
+//methode POST/DELETE/GET/PUT/HEAD/DEPRECATED_GET_OR_POST/OPTIONS/PATCH/TRACE => 1/3/0/2/4/-1/5/7/6
 ```
 This is the demo of API call here first you get the result is an bool and the response is string value you get the Rest API response, 
 after you need to pass the api type which is POST/DELETE/GET/PUT/HEAD/DEPRECATED_GET_OR_POST/OPTIONS/PATCH/TRACE => 1/3/0/2/4/-1/5/7/6
