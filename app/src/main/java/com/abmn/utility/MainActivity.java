@@ -14,8 +14,6 @@ import com.abmn.utility.SharedPref.USession;
 import com.abmn.utility.UI.UPinView;
 import com.abmn.utility.UI.USnackBar;
 
-import java.util.HashMap;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,13 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UConfig.isConnectedAlert(this, "", "");
+        UConfig uConfig = new UConfig(this);
+        if (!uConfig.isConnected()){
+            uConfig.isConnectedAlert("", "");
+        }
 
         ProgressDisplay progressDisplay = new ProgressDisplay(this);
 
-        progressDisplay.showProgress();
-
-        UConfig.requestToAPI((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
+        progressDisplay.showProgress(); //this for show progress
+        progressDisplay.hideProgress(); //this for hide progress
 
         USession uSession = new USession(this);
         uSession.setData("string", "Utility By MD NAYEEM SARKER");

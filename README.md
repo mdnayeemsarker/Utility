@@ -127,19 +127,21 @@ uSession.clearData(); //for clear all sesion data
 Log.d("uSession clear data: ", "Clear all session data");
 ```
 
-//If you use this dependency then you not need to add volley library in you project.
-You just need to install this library, then you can call Rest API and get the response from it.
+//If you use this dependency then you can check if the device connected ot not with the internet connection.
 
 ## You can use UConfig in your activity class or fragment.
 ```bash
-#right now this is only for single request
-UConfig.requestToAPI((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
-//right now this is only for single request
-//methode POST/DELETE/GET/PUT/HEAD/DEPRECATED_GET_OR_POST/OPTIONS/PATCH/TRACE => 1/3/0/2/4/-1/5/7/6
+UConfig uConfig = new UConfig(this);
+if (!uConfig.isConnected()){
+    uConfig.isConnectedAlert("", ""); // if you want to add your custorm alert title and message give the value otherwise show default
+}
 ```
-This is the demo of API call here first you get the result is an bool and the response is string value you get the Rest API response, 
-after you need to pass the api type which is POST/DELETE/GET/PUT/HEAD/DEPRECATED_GET_OR_POST/OPTIONS/PATCH/TRACE => 1/3/0/2/4/-1/5/7/6
-then activity, url, parameter, bool val true is show progress display if false not show to display any thing.
+## If you want To display a nice progress display do this as it is work in activity java class or fragment
+```bash
+ProgressDisplay progressDisplay = new ProgressDisplay(this); //firs timeinit this and then
+progressDisplay.showProgress(); //this for show progress
+progressDisplay.hideProgress(); //this for hide progress
+```
 
 //One more thing if you choose this dependency you not need to configure the SharedPreferences
 simply use this.
