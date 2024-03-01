@@ -28,7 +28,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     group = 'com.abmn.utility'
-    version = '1.0.3'
+    version = '1.0.4'
 }
 
 dependencies {

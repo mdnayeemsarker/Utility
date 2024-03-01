@@ -20,7 +20,7 @@ Add Dependency Just go to your build.gradle Module:
 //Add the dependency
 dependencies {
 ```bash
-	implementation 'com.github.mdnayeemsarker:Utility:1.0.3'
+	implementation 'com.github.mdnayeemsarker:Utility:1.0.4'
 ```
 }
 
@@ -133,7 +133,7 @@ You just need to install this library, then you can call Rest API and get the re
 ## You can use UConfig in your activity class or fragment.
 ```bash
 #right now this is only for single request
-UConfig.requestToVolley((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
+UConfig.requestToAPI((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
 ```
 This is the demo of API call here first you get the result is an bool and the response is string value you get the Rest API response, 
 after you need to pass the api type which is POST/DELETE/GET/PUT/HEAD/DEPRECATED_GET_OR_POST/OPTIONS/PATCH/TRACE => 1/3/0/2/4/-1/5/7/6

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         progressDisplay.showProgress();
 
-        UConfig.requestToVolley((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
+        UConfig.requestToAPI((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
 
         USession uSession = new USession(this);
         uSession.setData("string", "Utility By MD NAYEEM SARKER");
