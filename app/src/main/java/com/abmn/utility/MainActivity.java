@@ -3,11 +3,16 @@ package com.abmn.utility;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.EditText;
 
+import com.abmn.utility.UI.UEditText;
 import com.abmn.utility.Internet.UConfig;
 import com.abmn.utility.Internet.ProgressDisplay;
 import com.abmn.utility.SharedPref.USession;
+import com.abmn.utility.UI.UPinView;
+import com.abmn.utility.UI.USnackBar;
 
 import java.util.HashMap;
 
@@ -24,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         progressDisplay.showProgress();
 
-        UConfig.RequestToVolley((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
+        UConfig.requestToVolley((result, response) -> Log.d("response", response), 0, this, "https://jsonplaceholder.typicode.com/todos/1", new HashMap<>(), true);
 
         USession uSession = new USession(this);
         uSession.setData("string", "Utility By MD NAYEEM SARKER");
@@ -39,5 +44,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d("uSession float: ", String.valueOf(uSession.getFloat("float")));
         uSession.clearData();
         Log.d("uSession clear data: ", "Clear all session data");
+
+        UPinView uPinView = findViewById(R.id.uPinView);
+
+        EditText checkET = findViewById(R.id.checkET);
+
+        findViewById(R.id.checkBtnET).setOnClickListener(v -> {
+            UEditText.hideKeyboard(this, v);
+            String check = checkET.getText().toString();
+            if (TextUtils.isEmpty(check)){
+                UEditText.setError(checkET, "Required Field");
+            }else {
+                new USnackBar().SnackbarWithAction(v, "Here is your input text: " + check, "Go", this, CheckActivity.class);
+            }
+        });
     }
 }
