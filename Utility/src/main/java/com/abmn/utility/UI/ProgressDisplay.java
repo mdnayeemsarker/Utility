@@ -1,4 +1,4 @@
-package com.abmn.utility.Internet;
+package com.abmn.utility.UI;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

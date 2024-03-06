@@ -7,7 +7,7 @@
     <shape
         android:innerRadiusRatio="3"
         android:shape="ring"
-        android:thicknessRatio="9"
+        android:thicknessRatio="10"
         android:useLevel="false">
 
         <size
@@ -16,9 +16,9 @@
 
         <gradient
             android:angle="180"
-            android:startColor="#22E415"
-            android:centerColor="#1BE4DD"
-            android:endColor="#D32929"
+            android:startColor="#A867F6"
+            android:centerColor="#B593DF"
+            android:endColor="#6D29BF"
             android:type="linear"
             android:useLevel="false" />
     </shape>

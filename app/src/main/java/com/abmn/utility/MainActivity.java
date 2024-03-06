@@ -8,9 +8,7 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.abmn.utility.UI.UEditText;
-import com.abmn.utility.Internet.UConfig;
-import com.abmn.utility.Internet.ProgressDisplay;
-import com.abmn.utility.SharedPref.USession;
+import com.abmn.utility.UI.ProgressDisplay;
 import com.abmn.utility.UI.UPinView;
 import com.abmn.utility.UI.USnackBar;
 
@@ -31,19 +29,18 @@ public class MainActivity extends AppCompatActivity {
         progressDisplay.showProgress(); //this for show progress
         progressDisplay.hideProgress(); //this for hide progress
 
-        USession uSession = new USession(this);
-        uSession.setData("string", "Utility By MD NAYEEM SARKER");
-        Log.d("uSession String: ", uSession.getData("string"));
-        uSession.setInteger("int", 150);
-        Log.d("uSession integer: ", String.valueOf(uSession.getInteger("int")));
-        uSession.setBoolean("bool", true);
-        Log.d("uSession bool: ", String.valueOf(uSession.getBoolean("bool")));
-        uSession.setDouble("double", 165.656);
-        Log.d("uSession double: ", String.valueOf(uSession.getDouble("double")));
-        uSession.setFloat("float", .656F);
-        Log.d("uSession float: ", String.valueOf(uSession.getFloat("float")));
-        uSession.clearData();
-        Log.d("uSession clear data: ", "Clear all session data");
+        uConfig.setData("string", "Utility By MD NAYEEM SARKER");
+        Log.d("uConfig String: ", uConfig.getData("string"));
+        uConfig.setInteger("int", 150);
+        Log.d("uConfig integer: ", String.valueOf(uConfig.getInteger("int")));
+        uConfig.setBoolean("bool", true);
+        Log.d("uConfig bool: ", String.valueOf(uConfig.getBoolean("bool")));
+        uConfig.setDouble("double", 165.656);
+        Log.d("uConfig double: ", String.valueOf(uConfig.getDouble("double")));
+        uConfig.setFloat("float", .656F);
+        Log.d("uConfig float: ", String.valueOf(uConfig.getFloat("float")));
+        uConfig.clearData();
+        Log.d("uConfig clear data: ", "Clear all session data");
 
         UPinView uPinView = findViewById(R.id.uPinView);
 

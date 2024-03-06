@@ -20,7 +20,7 @@ Add Dependency Just go to your build.gradle Module:
 //Add the dependency
 dependencies {
 ```bash
-	implementation 'com.github.mdnayeemsarker:Utility:1.0.4'
+	implementation 'com.github.mdnayeemsarker:Utility:1.0.6'
 ```
 }
 
@@ -112,19 +112,19 @@ findViewById(R.id.checkBtnET).setOnClickListener(v -> {
 //If you need store some local data in application cash
 ## Declare USession class as a local or global variable in your activity or fragment and use the feature
 ```bash
-USession uSession = new USession(this); // this for activity
-uSession.setData("string", "Utility By MD NAYEEM SARKER"); //for set string data
-Log.d("uSession String: ", uSession.getData("string")); //for get string data
-uSession.setInteger("int", 150); //for set integer data
-Log.d("uSession integer: ", String.valueOf(uSession.getInteger("int"))); //for get integer data
-uSession.setBoolean("bool", true); //for set bool data
-Log.d("uSession bool: ", String.valueOf(uSession.getBoolean("bool"))); //for get bool data
-uSession.setDouble("double", 165.656); //for set double data
-Log.d("uSession double: ", String.valueOf(uSession.getDouble("double"))); //for get double data
-uSession.setFloat("float", .656F); //for set float data
-Log.d("uSession float: ", String.valueOf(uSession.getFloat("float"))); //for get float data
-uSession.clearData(); //for clear all sesion data
-Log.d("uSession clear data: ", "Clear all session data");
+UConfig uConfig = new UConfig(this); // this for activity
+uConfig.setData("string", "Utility By MD NAYEEM SARKER");
+Log.d("uConfig String: ", uConfig.getData("string"));
+uConfig.setInteger("int", 150);
+Log.d("uConfig integer: ", String.valueOf(uConfig.getInteger("int")));
+uConfig.setBoolean("bool", true);
+Log.d("uConfig bool: ", String.valueOf(uConfig.getBoolean("bool")));
+uConfig.setDouble("double", 165.656);
+Log.d("uConfig double: ", String.valueOf(uConfig.getDouble("double")));
+uConfig.setFloat("float", .656F);
+Log.d("uConfig float: ", String.valueOf(uConfig.getFloat("float")));
+uConfig.clearData();
+Log.d("uConfig clear data: ", "Clear all session data");
 ```
 
 //If you use this dependency then you can check if the device connected ot not with the internet connection.
