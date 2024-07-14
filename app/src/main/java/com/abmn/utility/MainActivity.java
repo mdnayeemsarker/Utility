@@ -12,6 +12,9 @@ import com.abmn.utility.UI.ProgressDisplay;
 import com.abmn.utility.UI.UPinView;
 import com.abmn.utility.UI.USnackBar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -41,6 +44,32 @@ public class MainActivity extends AppCompatActivity {
         Log.d("uConfig float: ", String.valueOf(uConfig.getFloat("float")));
         uConfig.clearData();
         Log.d("uConfig clear data: ", "Clear all session data");
+
+        String jsonString = "[\n" +
+            "  {\n" +
+            "    \"name\": \"Alice\",\n" +
+            "    \"age\": 30,\n" +
+            "    \"city\": \"New York\"\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Bob\",\n" +
+            "    \"age\": 25,\n" +
+            "    \"city\": \"Los Angeles\"\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Charlie\",\n" +
+            "    \"age\": 35,\n" +
+            "    \"city\": \"Chicago\"}\n" +
+            "]";
+        try {
+            JSONArray jsonArray = new JSONArray(jsonString);
+            uConfig.setJSONArray("array", jsonArray);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        JSONArray getArray = uConfig.getJSONArray("array");
+        Log.d("array", getArray.toString());
 
         UPinView uPinView = findViewById(R.id.uPinView);
 

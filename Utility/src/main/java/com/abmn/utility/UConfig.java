@@ -9,6 +9,9 @@ import android.net.NetworkInfo;
 
 import androidx.appcompat.app.AlertDialog;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class UConfig {
     public static final String PREFER_NAME = "abmn_utility";
     final int PRIVATE_MODE = 0;
@@ -100,5 +103,19 @@ public class UConfig {
         editor.commit();
     }
 
+    public void setJSONArray(String key, JSONArray list) {
+        editor.putString(key, list.toString());
+        editor.apply();
+        editor.commit();
+    }
+
+    public JSONArray getJSONArray(String key) {
+        String json = pref.getString(key, null);
+        try {
+            return new JSONArray(json);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

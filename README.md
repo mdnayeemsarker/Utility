@@ -143,6 +143,22 @@ progressDisplay.showProgress(); //this for show progress
 progressDisplay.hideProgress(); //this for hide progress
 ```
 
+## If you want To store an array list in your local data then try to use this
+```bash
+ProgressDisplay progressDisplay = new ProgressDisplay(this); //firs timeinit this and then
+UConfig uConfig = new UConfig(this); // this for activity
+try {
+    JSONArray jsonArray = new JSONArray(jsonString); //make an array to string and use this 
+    uConfig.setJSONArray("array", jsonArray);
+} catch (JSONException e) {
+    throw new RuntimeException(e);
+}
+
+//this way you can get array any whare in your project  
+JSONArray getArray = uConfig.getJSONArray("array");
+Log.d("array", getArray.toString());
+```
+
 //One more thing if you choose this dependency you not need to configure the SharedPreferences
 simply use this.
 
