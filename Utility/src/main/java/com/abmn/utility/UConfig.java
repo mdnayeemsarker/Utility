@@ -1,10 +1,10 @@
 package com.abmn.utility;
 
+
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,21 +24,19 @@ public class UConfig {
     final int PRIVATE_MODE = 0;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-
-    Context context;
-    @SuppressLint("WrongConstant")
-    public UConfig(Context context) {
+    Activity activity;
+    public UConfig(Activity activity) {
         try {
-            this.context= context;
-            pref = context.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+            this.activity = activity;
+            pref = activity.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
             editor = pref.edit();
         } catch (Exception e) {
-            Log.d("config", Objects.requireNonNull(e.getMessage()));
+            Log.d("uConfig", Objects.requireNonNull(e.getMessage()));
         }
     }
 
     public Boolean isConnected() {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
@@ -53,7 +51,7 @@ public class UConfig {
             message = "This is an alert message from MD NAYEEM SARKER, If you give null or empty then it show default message";
         }
         if (!isConnected()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(title);
             builder.setMessage(message);
             builder.setPositiveButton("Retry", (dialog, which) -> dialog.dismiss())
@@ -126,13 +124,15 @@ public class UConfig {
             throw new RuntimeException(e);
         }
     }
+
     public void hideKeyboard(View root) {
         try {
-            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
             assert inputMethodManager != null;
             inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
         } catch (Exception e) {
             Log.d("keyboardHideEx", Objects.requireNonNull(e.getMessage()));
         }
     }
+
 }
