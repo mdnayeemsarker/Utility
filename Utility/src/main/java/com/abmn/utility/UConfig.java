@@ -4,7 +4,7 @@ package com.abmn.utility;
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,11 +24,11 @@ public class UConfig {
     final int PRIVATE_MODE = 0;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    Activity activity;
-    public UConfig(Activity activity) {
+    Context context;
+    public UConfig(Context context) {
         try {
-            this.activity = activity;
-            pref = activity.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+            this.context = context;
+            pref = context.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
             editor = pref.edit();
         } catch (Exception e) {
             Log.d("uConfig", Objects.requireNonNull(e.getMessage()));
@@ -36,7 +36,7 @@ public class UConfig {
     }
 
     public Boolean isConnected() {
-        ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
@@ -51,7 +51,7 @@ public class UConfig {
             message = "This is an alert message from MD NAYEEM SARKER, If you give null or empty then it show default message";
         }
         if (!isConnected()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle(title);
             builder.setMessage(message);
             builder.setPositiveButton("Retry", (dialog, which) -> dialog.dismiss())
@@ -127,7 +127,7 @@ public class UConfig {
 
     public void hideKeyboard(View root) {
         try {
-            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
             assert inputMethodManager != null;
             inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
         } catch (Exception e) {
