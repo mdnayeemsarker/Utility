@@ -1,35 +1,45 @@
 package com.abmn.utility;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AlertDialog;
+
+import com.abmn.utility.Core.Config;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.Objects;
+
 public class UConfig {
-    public static final String PREFER_NAME = "abmn_utility";
-    final int PRIVATE_MODE = 0;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    Activity activity;
-    public UConfig(Activity activity) {
+
+    Context context;
+    @SuppressLint("WrongConstant")
+    public UConfig(Context context) {
         try {
-            this.activity = activity;
-            pref = activity.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+            this.context= context;
+            pref = context.getSharedPreferences(Config.getPreferName(), Config.getPrivateMode());
             editor = pref.edit();
         } catch (Exception e) {
-            e.printStackTrace();
+            if (Config.isDebugMode())
+                Log.d("config", Objects.requireNonNull(e.getMessage()));
         }
     }
 
     public Boolean isConnected() {
-        ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
@@ -37,14 +47,14 @@ public class UConfig {
     }
 
     public void isConnectedAlert(String title, String message) {
-        if (title.equals("") || title.equals("null")) {
+        if (title.isEmpty() || title.equals("null")) {
             title = "Alert by MD NAYEEM SARKER";
         }
-        if (message.equals("") || message.equals("null")) {
+        if (message.isEmpty() || message.equals("null")) {
             message = "This is an alert message from MD NAYEEM SARKER, If you give null or empty then it show default message";
         }
         if (!isConnected()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle(title);
             builder.setMessage(message);
             builder.setPositiveButton("Retry", (dialog, which) -> dialog.dismiss())
@@ -117,5 +127,14 @@ public class UConfig {
             throw new RuntimeException(e);
         }
     }
-
+    public void hideKeyboard(View root) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            assert inputMethodManager != null;
+            inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
+        } catch (Exception e) {
+            if (Config.isDebugMode())
+                Log.d("keyboardHideEx", Objects.requireNonNull(e.getMessage()));
+        }
+    }
 }

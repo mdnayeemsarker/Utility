@@ -20,7 +20,7 @@ Add Dependency Just go to your build.gradle Module:
 //Add the dependency
 dependencies {
 ```bash
-	implementation 'com.github.mdnayeemsarker:Utility:1.0.7'
+	implementation 'com.github.mdnayeemsarker:Utility:1.0.8'
 ```
 }
 
