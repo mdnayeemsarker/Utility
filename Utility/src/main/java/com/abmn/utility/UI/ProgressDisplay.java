@@ -35,8 +35,7 @@ public class ProgressDisplay {
                 throw new IllegalArgumentException("Context must be an Activity or provide a valid ViewGroup root.");
             }
         } catch (Exception e) {
-            if (Config.isDebugMode())
-                Log.d("ABMN_Progress_Dialog", Objects.requireNonNull(e.getMessage()));
+            Log.d("ABMN_Progress_Dialog", Objects.requireNonNull(e.getMessage()));
         }
     }
 
@@ -82,8 +81,7 @@ public class ProgressDisplay {
                 }
             }
         } catch (Exception e) {
-            if (Config.isDebugMode())
-                Log.d("ABMN_Progress_Dialog", Objects.requireNonNull(e.getMessage()));
+            Log.d("ABMN_Progress_Dialog", Objects.requireNonNull(e.getMessage()));
         }
     }
 }
