@@ -14,24 +14,26 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.abmn.utility.Core.Config;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.Objects;
 
 public class UConfig {
-    public static final String PREFER_NAME = "abmn_utility";
-    final int PRIVATE_MODE = 0;
+    public static final String PREFER_NAME = Config.getPreferName();
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context context;
     public UConfig(Context context) {
         try {
             this.context = context;
-            pref = context.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+            pref = context.getSharedPreferences(PREFER_NAME, 0);
             editor = pref.edit();
         } catch (Exception e) {
-            Log.d("uConfig", Objects.requireNonNull(e.getMessage()));
+            if (Config.isDebugMode())
+                Log.d("uConfig", Objects.requireNonNull(e.getMessage()));
         }
     }
 
@@ -131,7 +133,8 @@ public class UConfig {
             assert inputMethodManager != null;
             inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
         } catch (Exception e) {
-            Log.d("keyboardHideEx", Objects.requireNonNull(e.getMessage()));
+            if (Config.isDebugMode())
+                Log.d("keyboardHideEx", Objects.requireNonNull(e.getMessage()));
         }
     }
 

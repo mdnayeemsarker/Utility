@@ -39,7 +39,7 @@ publishing {
         release(MavenPublication) {
             groupId 'com.github.mdnayeemsarker'
             artifactId 'Utility'
-            version '1.1.2'
+            version '1.1.3'
 
             pom {
                 name = "Utility"
