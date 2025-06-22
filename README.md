@@ -171,4 +171,4 @@ simply use this.
 
 ## License
 
-MIT © [MD NAYEEM SARKER](https://github.com/mdnayeemsarker)
+This project is licensed under the [MIT License](LICENSE) © [MD NAYEEM SARKER](https://github.com/mdnayeemsarker)
